@@ -1,0 +1,17 @@
+Homework 1:
+
+Part 1:
+
+I wrote a function to drop all non IP addresses and mapped all the lines to this function, the function splits all the IPs by "." and checks whether each part is numerical or not. If all parts are numerical the function returns the lines otherwise it does not. After which I removed all the lines containing '-' since these lines are not needed. I converted all bytes to int and then used reduce by key to calculate total number of bytes for any given IP address. After which I get a csv file.
+
+Part 2:
+
+Part 2 was just an extension of part 1. Once I get a final RDD I used sortBy to sort the bytes data in a descending order and then took top 10 and top 100 lines and get a csv file for both.
+
+Part 3:
+
+For Part 3 I isolated the IP, time and bytes data first after which I map the RDD as (hour, [IP,time,bytes]). This RDD was used to group different hours from 00 to 23. After grouping I isolate the 00 hour as that is what we need. After isolating just like part 1 I isolate the IP and bytes use reduce to calculate total number of bytes for any given IP address and get a csv file.
+
+Part 4:
+
+In part 4 I changed the function written for Part 1 to remove non IP addresses. The function instead of returning all valid IP addresses now returns just the first 3 bytes of a valid IP address. Since, a subnet will have the first 3 bytes same. Hence, by doing this all the IPs in the same subnet will eventually produce the same 'Key'. By using reduceByKey on this set of Keys calculates the number of bytes in the same subnet. After which I get a csv file.   
